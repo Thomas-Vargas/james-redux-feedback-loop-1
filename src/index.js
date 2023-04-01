@@ -5,9 +5,15 @@ import App from './components/App/App';
 import {Provider} from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import logger from "redux-logger";
+import axios from "axios";
 
 // allData Reducer
 const allData = (state = [], action) => {
+    if(action.type === 'PUSH_DATA'){
+
+        // POST request here
+        return [...state, action.payload];
+    }
     return state;
 }
 
@@ -26,6 +32,9 @@ const userData = (
                 support: action.payload.support,
                 comments: action.payload.comments
             }
+        }
+        else if(action.type === 'NEW_FEEDBACK'){
+            return action.payload;
         }
     return state;
 }
