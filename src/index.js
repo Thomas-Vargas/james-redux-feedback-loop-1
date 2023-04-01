@@ -26,12 +26,14 @@ const userData = (
         comments: ''
     }, action) => {
         if(action.type === 'SUBMIT_DATA'){
-            return {
-                feeling: action.payload.feeling,
-                understanding: action.payload.understanding,
-                support: action.payload.support,
-                comments: action.payload.comments
-            }
+            // POST request
+            axios.post('/feedback', action.payload).then(response => {
+                console.log('successfully posted feedback to db')
+            }).catch(err => {
+                console.log(err);
+            })
+            
+            return action.payload
         }
         else if(action.type === 'NEW_FEEDBACK'){
             return action.payload;
