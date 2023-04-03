@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from "react-router-dom";
+import './Review.css';
 
 function Review(){
     // set dispatch
@@ -26,7 +27,7 @@ function Review(){
         history.push('/success');
     }
     return(
-        <form type="submit" onSubmit={handleSubmit}>
+        <form className="userForm" type="submit" onSubmit={handleSubmit}>
             {/* Feelings */}
             <label>Feelings: {userData.feeling}</label>
             {/* Understanding */}
