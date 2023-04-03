@@ -7,15 +7,6 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import logger from "redux-logger";
 import axios from "axios";
 
-// allData Reducer
-const allData = (state = [], action) => {
-    if(action.type === 'PUSH_DATA'){
-
-        // POST request here
-        return [...state, action.payload];
-    }
-    return state;
-}
 
 // userData Reducer
 const userData = (
@@ -32,7 +23,7 @@ const userData = (
             }).catch(err => {
                 console.log(err);
             })
-            
+
             return action.payload
         }
         else if(action.type === 'NEW_FEEDBACK'){
@@ -77,7 +68,6 @@ const comments = (state='', action) => {
 const store = createStore(
     combineReducers({
         userData,
-        allData,
         feeling,
         understanding,
         support,

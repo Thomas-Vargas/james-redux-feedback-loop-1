@@ -8,16 +8,20 @@ function FeelingForm(){
     // instantiate dispatch
     const dispatch = useDispatch();
     // feelings state
-    const [feeling, setFeeling] = useState('');
+    const [feeling, setFeeling] = useState(0);
 
     const handleSubmit = event => {
         event.preventDefault();
         
-        dispatch({
-            type: 'SET_FEELING',
-            payload: feeling
-        })
-        history.push('/understanding');
+        if(feeling > 0 && feeling <= 5){
+            dispatch({
+                type: 'SET_FEELING',
+                payload: feeling
+            })
+            history.push('/understanding');
+        }else{
+            alert('rating must be in the range of 1-5');
+        }
     }
 
     const handleFeelings = event => {

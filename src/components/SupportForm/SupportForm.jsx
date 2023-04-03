@@ -8,16 +8,20 @@ function SupportForm(){
     // instantiate dispatch
     const dispatch = useDispatch();
     // support state
-    const [support, setSupport] = useState('');
+    const [support, setSupport] = useState(0);
 
     const handleSubmit = event => {
         event.preventDefault();
-        
-        dispatch({
-            type: 'SET_SUPPORT',
-            payload: support
-        })
-        history.push('/comments');
+        if(support > 0 && support <= 5){
+
+            dispatch({
+                type: 'SET_SUPPORT',
+                payload: support
+            })
+            history.push('/comments');
+        }else{
+            alert('rating must be in the range of 1-5');
+        }
     }
 
     const handleSupport = event => {

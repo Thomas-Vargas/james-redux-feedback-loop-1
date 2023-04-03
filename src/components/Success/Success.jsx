@@ -19,12 +19,6 @@ function Success() {
             comments: ''
         }
 
-        // Push userData to allData
-        dispatch({
-            type: 'PUSH_DATA',
-            payload: userData
-        })
-
         // Clear userData for new feedback
         dispatch({
             type: 'NEW_FEEDBACK',

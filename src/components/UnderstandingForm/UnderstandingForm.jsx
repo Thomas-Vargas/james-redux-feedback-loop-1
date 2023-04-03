@@ -8,17 +8,22 @@ function UnderstandingForm(){
     // instantiate dispatch
     const dispatch = useDispatch();
     // understanding state
-    const [understanding, setunderstanding] = useState('');
+    const [understanding, setunderstanding] = useState(0);
 
     
     const handleSubmit = event => {
         event.preventDefault();
-        
-        dispatch({
-            type: 'SET_UNDERSTANDING',
-            payload: understanding
-        })
-        history.push('/support');
+        if(understanding > 0 && understanding <= 5){
+
+            dispatch({
+                type: 'SET_UNDERSTANDING',
+                payload: understanding
+            })
+            history.push('/support');
+        }
+        else{
+            alert('rating must be in the range of 1-5');
+        }
     }
 
     const handleUnderstanding = event => {
